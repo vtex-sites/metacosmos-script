@@ -1,0 +1,34 @@
+.App {
+  text-align: center;
+  padding: 3%;
+}
+
+#cart {
+  font-family: "Roboto",sans-serif;
+}
+
+#cart-contents {
+  font-family: "Roboto",sans-serif;
+  text-align: left;
+}
+
+#tint-bttn {
+  box-sizing: border-box;
+  appearance: none;
+  box-shadow: none;
+  text-shadow: none;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #fff;
+  font-family: "Roboto",sans-serif;
+  background-color: #000;
+  transition: all 300ms ease;
+  padding: 11px 15px;
+  margin-left: 10px;
+  width: 35%;
+  font-size: .75rem;
+  cursor: pointer;
+}
