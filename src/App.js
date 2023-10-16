@@ -21,11 +21,6 @@ function App() {
     const widget = document.querySelector("tint-vto") //É "okay" usar um query selector aqui pois o entrypoint do react é a div#root.
     widget.addEventListener("addToCart", ({detail}) => {tintToCart(detail)}); //O mesmo que acima, esses elementos estão fora do lifecycle do react.
     // widget.addEventListener("removeFromCart", ({detail}) => {tintToCart(detail)}); //O mesmo que acima, esses elementos estão fora do lifecycle do react.
-    widget.addEventListener("removeFromCart", ( e ) => {
-        console.log(e)
-    }); //O mesmo que acima, esses elementos estão fora do lifecycle do react.
-
-    // console.log(widget)
     
     await widget.open();
   }
