@@ -1,5 +1,5 @@
 import {useState, useRef} from 'react';
-import './App.css';
+// import './App.css';
 
 function App() {
   
@@ -16,11 +16,27 @@ function App() {
     setCart(JSON.stringify(cart_contents, null, 4));
   };
 
+  function getCart() { 
+    const contentCart = document.querySelector('#cartRa textarea').value
+    return JSON.parse(contentCart)
+  }
+
 
   async function getWidget() {
     const widget = document.querySelector("tint-vto") //É "okay" usar um query selector aqui pois o entrypoint do react é a div#root.
     widget.addEventListener("addToCart", ({detail}) => {tintToCart(detail)}); //O mesmo que acima, esses elementos estão fora do lifecycle do react.
-    // widget.addEventListener("removeFromCart", ({detail}) => {tintToCart(detail)}); //O mesmo que acima, esses elementos estão fora do lifecycle do react.
+    
+    widget.addEventListener("removeFromCart", ( {detail} ) => {
+      const currentCart = getCart()
+      const idsItems = detail.map(item => item.id)
+
+      const restItems = currentCart.filter( item => {
+        return !idsItems.includes(item.id)
+      })
+
+      tintToCart(restItems)
+    }); //O mesmo que acima, esses elementos estão fora do lifecycle do react.
+    
     
     await widget.open();
   }
@@ -41,16 +57,18 @@ function App() {
     }
   }
   
+  // console.log(cart)
 
   return (
     <div className="App">
       <button id="tint-bttn" onClick={_onClick}>
         Abrir o provador virtual
       </button>
-      <div id="cart">
-        <h1> Carrinho </h1>
-        <pre id='cart-contents'> {cart} </pre>
+      <div id="cartRa">
+        <textarea value={cart} hidden></textarea>
       </div>
+
+      <pre>{cart}</pre>
     </div>
   );
 }
