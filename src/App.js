@@ -35,8 +35,7 @@ function App() {
     //   })
 
     //   tintToCart(restItems)
-    // });
-    
+    // });    
     widget.addEventListener("redirectToCart", ( event ) => {
       console.log(event)
     });
