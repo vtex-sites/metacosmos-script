@@ -24,18 +24,22 @@ function App() {
 
   async function getWidget() {
     const widget = document.querySelector("tint-vto") //É "okay" usar um query selector aqui pois o entrypoint do react é a div#root.
-    widget.addEventListener("addToCart", ({detail}) => {tintToCart(detail)}); //O mesmo que acima, esses elementos estão fora do lifecycle do react.
+    // widget.addEventListener("addToCart", ({detail}) => {tintToCart(detail)}); //O mesmo que acima, esses elementos estão fora do lifecycle do react.
     
-    widget.addEventListener("removeFromCart", ( {detail} ) => {
-      const currentCart = getCart()
-      const idsItems = detail.map(item => item.id)
+    // widget.addEventListener("removeFromCart", ( {detail} ) => {
+    //   const currentCart = getCart()
+    //   const idsItems = detail.map(item => item.id)
 
-      const restItems = currentCart.filter( item => {
-        return !idsItems.includes(item.id)
-      })
+    //   const restItems = currentCart.filter( item => {
+    //     return !idsItems.includes(item.id)
+    //   })
 
-      tintToCart(restItems)
-    }); //O mesmo que acima, esses elementos estão fora do lifecycle do react.
+    //   tintToCart(restItems)
+    // });
+    
+    widget.addEventListener("redirectToCart", ( event ) => {
+      console.log(event)
+    });
     
     
     await widget.open();
