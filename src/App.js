@@ -67,8 +67,6 @@ function App() {
       <div id="cartRa">
         <textarea value={cart} hidden></textarea>
       </div>
-
-      <pre>{cart}</pre>
     </div>
   );
 }
